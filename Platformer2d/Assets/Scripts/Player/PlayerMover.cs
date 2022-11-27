@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerMover : MonoBehaviour
 {
 	[SerializeField] private float _speed;
@@ -23,7 +24,7 @@ public class PlayerMover : MonoBehaviour
 	{
 		_horizontalMove = Input.GetAxisRaw("Horizontal");
 
-		_animator.SetFloat("Speed", Mathf.Abs(_horizontalMove));
+		_animator.SetFloat(AnimatorPlayerController.Params.Speed, Mathf.Abs(_horizontalMove));
 
 		_rigidBody.velocity = new Vector2(_horizontalMove * _speed, _rigidBody.velocity.y);
 
@@ -49,5 +50,13 @@ public class PlayerMover : MonoBehaviour
 			localScale.x *= -1f;
 			transform.localScale = localScale;
 		}
+	}
+}
+
+public static class AnimatorPlayerController
+{
+	public static class Params
+	{
+		public const string Speed = nameof(Speed);
 	}
 }

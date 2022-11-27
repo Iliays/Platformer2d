@@ -169,12 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5271a7a1b1f922a4d90a4aedccada914, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _coinPrefab: {fileID: 2396708140411242230, guid: b5ac4a993638101439a0a2f1e5c52604, type: 3}
+  _coinPrefab: {fileID: -7894444451317919944, guid: b5ac4a993638101439a0a2f1e5c52604, type: 3}
   _spawnPoints:
   - {fileID: 1996004897}
   - {fileID: 1384697790}
   - {fileID: 2114229303}
-  _secondsBetweenSpawn: 5
+  _delay: 5
 --- !u!1 &378580483
 GameObject:
   m_ObjectHideFlags: 0

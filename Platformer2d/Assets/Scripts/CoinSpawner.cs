@@ -4,22 +4,27 @@ using UnityEngine;
 
 public class CoinSpawner : MonoBehaviour
 {
-    [SerializeField] private GameObject _coinPrefab;
-    [SerializeField] private Transform[] _spawnPoints;
-	[SerializeField] private float _secondsBetweenSpawn;
+	[SerializeField] private Coin _coinPrefab;
+	[SerializeField] private Transform[] _spawnPoints;
+	[SerializeField] private float _delay;
 
-	private float _elapsedTime = 0;
+	private bool _isGameActive = true;
 
-	private void Update()
+	private void Start()
 	{
-		_elapsedTime += Time.deltaTime;
+		StartCoroutine(Delay(_delay));
+	}
 
-		if (_elapsedTime >= _secondsBetweenSpawn)
+	private IEnumerator Delay(float delay)
+	{
+		var waitForDelay = new WaitForSeconds(delay);
+
+		while (_isGameActive)
 		{
-			_elapsedTime = 0;
-
 			int spawnPointNumber = Random.Range(0, _spawnPoints.Length);
 			Instantiate(_coinPrefab, _spawnPoints[spawnPointNumber]);
+
+			yield return waitForDelay;
 		}
 	}
 }
